@@ -1,0 +1,35 @@
+<%- include('../Components/Head.ejs') %> 
+<%- include('../Components/Navigation.ejs') %> 
+
+
+<div class="container mt-5">
+    <div class="text-center mb-5" >
+        <h1>Reset Password</h1>
+    </div>
+    <% if(message) { %>
+      <div class="alert alert-danger" role="alert">
+        <%=message%> 
+      </div>
+      <% } %> 
+    <form action="/Reset" method="POST">
+        <div class="form-group mt-4">
+          <label for="Email">Email address</label>
+          <input type="email" class="form-control" id="Email" aria-describedby="emailHelp"  name="email" placeholder="Enter email">
+      
+        </div>
+        <button type="submit " class="btn btn-outline-primary text-primary mt-4">Reset password</button>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+      </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<%- include('../Components/Footer.ejs') %> 

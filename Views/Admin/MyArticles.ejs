@@ -1,0 +1,46 @@
+<%- include('../Components/Head.ejs') %> <%-
+include('../Components/Navigation.ejs') %>
+
+<div class="container mt-5">
+  <% if(info){ %>
+    <div class="alert alert-info" role="alert">
+      <%= info %> 
+    </div>
+    <% } %>
+  <h1 class="mb-5">Recent Posts:</h1>
+  <div class="row">
+    <% if(articles.length >0) { %> <% for(article of articles){ %>
+    <div class="col-sm-6 mb-5">
+      <div class="card">
+        <div class="card-body">
+          <h3><%= article.title %></h3>
+          <p class="card-text" style="font-size: 17px;">
+            <%= article.description %>
+          </p>
+          <p><%= article.createdAt %></p>
+          <a href="/Article/<%= article.id %>" class="btn btn-primary">Read</a>
+          <a
+            href="/Admin/AddArticle/<%= article.id %>?edit=true"
+            class="btn btn-primary"
+            >Edit</a
+          >
+          
+            <input type="hidden" name="articleId" value="<%= article.id %>" />
+            <button type="submit" class="btn btn-primary deleteBtn">
+              Delete Article
+            </button>
+        
+        </div>
+      </div>
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+    </div>
+    <% } %> <% }else{ %>
+    <h2>You Don't Have Any Articles</h2>
+    <% } %>
+  </div>
+</div>
+
+
+<script src="/js/myArticles.js"> </script>
+
+<%- include('../Components/Footer.ejs') %>

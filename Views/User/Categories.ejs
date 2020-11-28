@@ -1,0 +1,37 @@
+<%- include('../Components/Head.ejs') %> <%-
+include('../Components/Navigation.ejs') %>
+
+<div class="container mt-5">
+  <h3>Tags:</h3>
+  <button class="badge badge-primary p-3 m-2" id="all" style="font-size: 18px">
+    all
+  </button>
+  <%for (category of categories){%>
+  <button
+    class="badge badge-primary p-3 m-2"
+    id="<%= category.name %>"
+    style="font-size: 18px"
+  >
+    <%= category.name %>
+  </button>
+  <% } %>
+
+  <h1 class="mt-5">Posts:</h1>
+  <div class="row"></div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <button class="page-link first" value="1">first</button>
+      </li>
+      <ul class="pagination justify-content-center links">
+
+      </ul>
+      <li class="page-item">
+        <button class="page-link last" value="1">last</button>
+      </li>
+    </ul>
+  </nav>
+</div>
+<input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+<script src="js/categories.js"></script>
+<%- include('../Components/Footer.ejs') %>

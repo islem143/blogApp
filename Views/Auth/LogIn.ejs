@@ -1,0 +1,50 @@
+<%- include('../Components/Head.ejs') %> <%- include('../Components/Navigation.ejs')
+%>
+
+<div class="container mt-5">
+  <div class="text-center mb-5">
+    <h1>
+      <a href="/SignUp" class="btn btn-secondary btn-lg">Sign Up</a> /
+      <a href="/LogIn" class="btn btn-secondary btn-lg active">Log In</a>
+    </h1>
+  </div>
+  <% if(message) { %>
+  <div class="alert alert-danger" role="alert">
+    <%=message%>
+  </div>
+  <% } %>
+  <form action="/LogIn" method="POST">
+    <div class="form-group mt-4">
+      <label for="Email">Email address</label>
+      <input
+      value="<%= oldInput.email %>"
+
+        type="email"
+        class="form-control"
+        id="Email"
+        aria-describedby="emailHelp"
+        name="email"
+        placeholder="Enter email"
+     required />
+    </div>
+    <div class="form-group mt-4">
+      <label for="Password">Password</label>
+      <input
+      value="<%= oldInput.password %>"
+
+        type="password"
+        class="form-control"
+        id="Password"
+        placeholder="Password"
+        name="password"
+      required/>
+    </div>
+    <button type="submit " class="btn btn-outline-primary text-primary mt-4">
+      Submit
+    </button>
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+  </form>
+  <a href="Reset">Reset Password</a>
+</div>
+
+<%- include('../Components/Footer.ejs') %>

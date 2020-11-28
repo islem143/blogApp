@@ -1,0 +1,36 @@
+<body >
+  <nav class="navbar navbar-expand-lg navbar-light bg-light p-4">
+    <a class="navbar-brand" href="/">
+     <img src="/Images/feather.png" width="40" height="40"> Blog App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="\">Home<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/CategoryPage">Categories</a>
+        </li>
+        
+          <% if(isAuth){ %>
+          <li class="nav-item">
+              <a class="nav-link" href="/Admin/AddArticle">Add Article </a> </li>
+              <li class="nav-item">
+                <a  class="nav-link" href="/Admin/MyArticles">My Articles</a>
+              </li>
+              <% }%>
+      </ul>
+      <% if(!isAuth){ %>
+      <a class="btn btn-outline-primary btn-lg text-primary  mx-2" href="/SignUp">Create Account</a>
+      <a class="btn btn-outline-primary btn-lg text-primary  mx-2" href="/LogIn">Log In</a>
+      <% }else{ %>
+        <form action="/LogOut" method="POST">
+         <input type="submit" value="Log Out" class="btn btn-outline-primary btn-lg text-primary  mx-2">
+         <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+        </form>
+      <%}  %> 
+    </div>
+  </nav>

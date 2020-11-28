@@ -1,0 +1,87 @@
+<%- include('../Components/Head.ejs') %> <%-
+include('../Components/Navigation.ejs') %>
+
+<div class="container mt-5">
+  <% if(message) { %>
+  <div class="alert alert-danger" role="alert"><%=message%></div>
+  <% } %>
+  <form
+    action=" <% if(editMode){ %>/Admin/EditArticle?_csrf=<%=csrfToken%><% }else{ %>/Admin/AddArticle?_csrf=<%=csrfToken%><% } %>"
+    method="POST"
+    enctype="multipart/form-data"
+    id="articleForm"
+  >
+    <!-- <input type="hidden" name="_csrf" value="" /> -->
+    <% if(info){ %>
+    <div class="alert alert-info" role="alert"><%= info %></div>
+    <% } %>
+    <div class="form-group mt-4">
+      <label for="Title">Post Title:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="Title"
+        name="postTitle"
+        placeholder="Enter Title"
+        value="<% if(editMode || message){ %><%= article.title %> <%}else{ %><% } %>"
+        required
+      />
+    </div>
+    <div class="form-group mt-4">
+      <label for="Description">Description</label>
+      <input
+        type="text"
+        class="form-control"
+        id="Description"
+        placeholder="Enter Description"
+        name="postDescription"
+        value="<% if(editMode || message){ %><%= article.description %> <%}else{ %><% } %>"
+        required
+      />
+    </div>
+    <div class="form-group mt-4">
+      <label for="image">Image</label>
+      <input
+        type="file"
+        class="form-control"
+        id="image"
+        name="postImage"
+        required
+      />
+    </div>
+    <div class="form-check mt-4 p-0">
+      <label for="content">Add content</label>
+      <textarea name="postContent" id="postContent" rows="10" cols="80">
+       <% if(editMode){ %> <%= article.content %><% } %>   
+      </textarea>
+    </div>
+    <div class="form-group mt-4">
+      <p>Select a category:</p>
+      <% for(category of categories){ %>
+      <label>
+        <input type="checkbox" name="categoryId" value="<%= category.id %>"/>
+        <%= category.name %> 
+      </label>
+    <% } %> 
+  
+    </div>
+
+    <% if(editMode){ %><input
+      type="hidden"
+      name="articleId"
+      value="<%= article.id %>"
+    /><% } %>
+    <button type="submit" class="btn btn-outline-primary text-primary mt-4">
+      <% if(editMode){ %>Edit Article <% }else{ %> Add Article <% } %>
+    </button>
+  </form>
+  <div id="test"></div>
+
+  <script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+
+  <script>
+    CKEDITOR.replace("postContent");
+  </script>
+
+  <%- include('../Components/Footer.ejs') %>
+</div>

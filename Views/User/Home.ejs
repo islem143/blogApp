@@ -1,0 +1,32 @@
+<%- include('../Components/Head.ejs') %> <%-
+include('../Components/Navigation.ejs') %>
+
+<div class="m-5 p-5">
+  <h1 class="text-center">Blog App</h1>
+  <h5 class="text-center mt-5">Create An Account And Start Blogging</h5>
+  <div class="text-center mt-5 mb-5">
+    <a class="btn btn-outline-primary btn-lg text-primary" href="/SignUp"
+      >Create Account</a
+    >
+  </div>
+</div>
+<hr />
+<div class="container mt-5" style="height: 500px">
+  <h1 class="mb-5">Recent Posts:</h1>
+  <div class="row"></div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <button class="page-link first" value="1">first</button>
+      </li>
+      <ul class="pagination justify-content-center links"></ul>
+      <li class="page-item">
+        <button class="page-link last" value="<%= nbrLinks %>">last</button>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+<script src="js/Home.js"></script>
+<%- include('../Components/Footer.ejs') %>
