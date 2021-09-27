@@ -2,10 +2,10 @@
 
 ## Features:
 
--create,update,delete posts.
--upload images
--posts are orginized into different categories
--users can create accounts and logIn
+- create,update,delete posts.
+- upload images
+- posts are orginized into different categories
+- users can create accounts and logIn
 
 ## Technologies:
 
