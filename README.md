@@ -9,11 +9,11 @@
 
 ## Technologies:
 
--Node.js for the Back-End
--Postgress for the Databases
--Ejs for rendering templates
--Sequelize as an orm
--Mocha and Chai for unit testing
+- Node.js for the Back-End
+- Postgress for the Databases
+- Ejs for rendering templates
+- Sequelize as an orm
+- Mocha and Chai for unit testing
 
 ## License
 
